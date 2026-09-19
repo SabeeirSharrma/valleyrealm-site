@@ -1,0 +1,18 @@
+---
+import Layout from '../layouts/Layout.astro';
+import FloatingNav from '../components/FloatingNav';
+import HeroSection from '../components/HeroSection';
+import WelcomeSection from '../components/WelcomeSection';
+import RulesSection from '../components/RulesSection';
+import IpSection from '../components/IpSection';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Valley Realm — Minecraft Community">
+  <FloatingNav client:only="react" />
+  <HeroSection client:only="react" />
+  <WelcomeSection client:only="react" />
+  <RulesSection client:only="react" />
+  <IpSection client:only="react" />
+  <Footer />
+</Layout>

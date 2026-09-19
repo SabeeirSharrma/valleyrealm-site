@@ -1,0 +1,118 @@
+---
+import Layout from './Layout.astro';
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<Layout title={`${title} — Valley Realm`}>
+  <main class="legal">
+    <div class="container legal-container">
+      <div class="legal-header">
+        <a href="/" class="legal-back">&larr; Back to Home</a>
+        <h1 class="legal-title">{title}</h1>
+        <p class="legal-updated">Last updated: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+      </div>
+      <article class="legal-body">
+        <slot />
+      </article>
+    </div>
+  </main>
+
+  <style>
+    .legal {
+      min-height: 100vh;
+      padding-top: calc(var(--nav-height) + var(--space-10));
+      padding-bottom: var(--space-24);
+    }
+
+    .legal-container {
+      max-width: 720px;
+    }
+
+    .legal-header {
+      margin-bottom: var(--space-12);
+    }
+
+    .legal-back {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-label);
+      color: var(--color-on-surface-muted);
+      text-decoration: none;
+      margin-bottom: var(--space-6);
+      transition: color var(--duration-short) var(--ease-standard);
+    }
+
+    .legal-back:hover {
+      color: var(--color-primary);
+    }
+
+    .legal-title {
+      font-size: clamp(1.75rem, 5vw, var(--text-headline));
+      font-weight: var(--weight-bold);
+      color: var(--color-on-surface);
+      margin-bottom: var(--space-3);
+    }
+
+    .legal-updated {
+      font-size: var(--text-label);
+      color: var(--color-on-surface-subtle);
+    }
+
+    .legal-body :global(h2) {
+      font-size: var(--text-title);
+      font-weight: var(--weight-semibold);
+      color: var(--color-on-surface);
+      margin-top: var(--space-10);
+      margin-bottom: var(--space-4);
+    }
+
+    .legal-body :global(h3) {
+      font-size: var(--text-body);
+      font-weight: var(--weight-semibold);
+      color: var(--color-on-surface);
+      margin-top: var(--space-6);
+      margin-bottom: var(--space-3);
+    }
+
+    .legal-body :global(p) {
+      font-size: var(--text-body);
+      color: var(--color-on-surface-muted);
+      line-height: 1.7;
+      margin-bottom: var(--space-4);
+    }
+
+    .legal-body :global(ul),
+    .legal-body :global(ol) {
+      padding-left: var(--space-6);
+      margin-bottom: var(--space-4);
+    }
+
+    .legal-body :global(li) {
+      font-size: var(--text-body);
+      color: var(--color-on-surface-muted);
+      line-height: 1.7;
+      margin-bottom: var(--space-2);
+    }
+
+    .legal-body :global(a) {
+      color: var(--color-primary);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    .legal-body :global(a:hover) {
+      color: var(--color-primary-light);
+    }
+
+    .legal-body :global(strong) {
+      font-weight: var(--weight-semibold);
+      color: var(--color-on-surface);
+    }
+  </style>
+</Layout>
