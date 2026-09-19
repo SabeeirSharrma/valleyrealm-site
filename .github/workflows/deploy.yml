@@ -25,10 +25,10 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: bun
+          cache: npm
 
-      - run: bun install --frozen-lockfile
-      - run: bun run build
+      - run: npm install --frozen-lockfile
+      - run: npm run build
 
       - uses: actions/upload-pages-artifact@v3
         with:
